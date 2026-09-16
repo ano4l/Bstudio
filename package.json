@@ -1,0 +1,1 @@
+{"name":"bambi-studio-shopify-theme","private":true,"scripts":{"check":"node scripts/check.mjs","build":"node scripts/build.mjs","package":"powershell -ExecutionPolicy Bypass -File scripts/package.ps1"}}
