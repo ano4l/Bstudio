@@ -1,0 +1,22 @@
+{
+  "source": {
+    "type": "merchant-supplied portfolio",
+    "delivered": "2026-09-20",
+    "originalFolder": "wetransfer_website-images_2026-09-20_2131",
+    "runtimeFolder": "assets/service-portfolio"
+  },
+  "services": {
+    "traditional-frontal-ponytail": {"title":"Traditional Frontal ponytail (hair included)","asset":"service-portfolio/image00013.jpeg","supportingAssets":["service-portfolio/image00018.jpeg"],"booksyListingReference":"Frontal Ponytail Including Bundles And Frontal"},
+    "fluffy-frontal-ponytail": {"title":"Fluffy frontal ponytail (hair included)","asset":"service-portfolio/image00014.jpeg","supportingAssets":["service-portfolio/image00017.jpeg"],"booksyListingReference":null},
+    "clean-installation-curling": {"title":"Clean installation + Curling","asset":"service-portfolio/image00010.jpeg","supportingAssets":["service-portfolio/image00009.jpeg"],"booksyListingReference":"Installation + Curling"},
+    "clean-installation-straightening": {"title":"Clean installation + Straightening","asset":"service-portfolio/image00007.jpeg","supportingAssets":["service-portfolio/image00006.jpeg","service-portfolio/image00008.jpeg"],"booksyListingReference":"Basic Installation + Straightening"},
+    "half-up-half-down": {"title":"Half up half down","asset":"service-portfolio/image00015.jpeg","supportingAssets":["service-portfolio/image00016.jpeg"],"booksyListingReference":"Half Up Half Down With A Wig"},
+    "bob-installation-10-14-inch": {"title":"Bob installation 10-14 inch","asset":"service-portfolio/image00012.jpeg","supportingAssets":[],"booksyListingReference":"Bob Installation, Curls Or Straight, 10-14 inch"},
+    "hd-lace-lagos-frontal-ponytail": {"title":"HD lace Lagos frontal ponytail (hair included)","asset":"service-portfolio/image00018.jpeg","supportingAssets":["service-portfolio/image00013.jpeg"],"booksyListingReference":"HD lace Lagos Frontal ponytail"}
+  },
+  "editorial": {
+    "homeHero": "service-portfolio/image00005.png",
+    "servicesHero": "service-portfolio/image00004.jpeg",
+    "unusedPortfolioAngles": ["service-portfolio/image00001.jpeg","service-portfolio/image00002.jpeg","service-portfolio/image00003.jpeg","service-portfolio/image00011.jpeg"]
+  }
+}

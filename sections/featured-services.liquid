@@ -8,17 +8,17 @@
     {% if collection != blank %}
       {% for product in collection.products limit: section.settings.limit %}
         {% liquid
-          assign fallback_asset = 'booksy-services/half-up-half-down.jpeg'
+          assign fallback_asset = 'service-portfolio/image00007.jpeg'
           assign image_alt = product.featured_image.alt | default: product.title
           case forloop.index
             when 1
-              assign fallback_asset = 'booksy-services/frontal-ponytail-client-hair.jpeg'
+              assign fallback_asset = 'service-portfolio/image00013.jpeg'
             when 2
-              assign fallback_asset = 'booksy-services/hd-lace-lagos-frontal-ponytail.jpeg'
+              assign fallback_asset = 'service-portfolio/image00014.jpeg'
             when 3
-              assign fallback_asset = 'booksy-services/basic-installation-straightening.jpeg'
+              assign fallback_asset = 'service-portfolio/image00010.jpeg'
             when 4
-              assign fallback_asset = 'booksy-services/frontal-ponytail-including-hair.jpeg'
+              assign fallback_asset = 'service-portfolio/image00007.jpeg'
           endcase
         %}
         <a class="service-card" href="{{ product.url }}">
@@ -39,14 +39,14 @@
     {% else %}
       {% for block in section.blocks %}
         {% liquid
-          assign fallback_asset = 'booksy-services/frontal-ponytail-client-hair.jpeg'
+          assign fallback_asset = 'service-portfolio/image00013.jpeg'
           case forloop.index
             when 2
-              assign fallback_asset = 'booksy-services/hd-lace-lagos-frontal-ponytail.jpeg'
+              assign fallback_asset = 'service-portfolio/image00014.jpeg'
             when 3
-              assign fallback_asset = 'booksy-services/basic-installation-straightening.jpeg'
+              assign fallback_asset = 'service-portfolio/image00010.jpeg'
             when 4
-              assign fallback_asset = 'booksy-services/frontal-ponytail-including-hair.jpeg'
+              assign fallback_asset = 'service-portfolio/image00007.jpeg'
           endcase
         %}
         <a class="service-card" href="{{ routes.collections_url }}" {{ block.shopify_attributes }}>

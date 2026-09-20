@@ -1,12 +1,12 @@
 # Bambï Beauty Bookings
 
-## Booksy catalogue migration (captured 20 September 2026)
+## Merchant catalogue (updated 21 September 2026)
 
-The seven-service catalogue in `data/shopify-services.csv` was transcribed from the published Bambï Beauty Booksy listing. In Shopify Admin, go to **Products → Import**, upload that CSV, review the seven draft products, add them to the services collection, assign imagery, and only then publish. The CSV includes price plus `custom.duration`, `custom.inclusions`, and `custom.preparation` metafield columns. Create matching product metafield definitions if Shopify prompts for them.
+The seven-service catalogue in `data/shopify-services.csv` follows the latest service titles and prices supplied by Bambï Beauty. In Shopify Admin, go to **Products → Import**, upload that CSV, review the seven draft products, add them to the services collection, assign imagery, and only then publish. The CSV includes price plus `custom.duration`, `custom.inclusions`, and `custom.preparation` metafield columns. Create matching product metafield definitions if Shopify prompts for them.
 
-## Public portfolio image provenance
+## Merchant portfolio image provenance
 
-The local files in `assets/booksy-services/` are public Bambï Beauty portfolio images captured from the supplied Booksy listing on 20 September 2026. The exact service-to-image mapping and original public URLs are recorded in `data/booksy-service-images.json`; the site never loads Booksy image URLs at runtime. Verify rights and current use with Bambï Beauty before public launch.
+The active local files in `assets/service-portfolio/` were supplied by the merchant in the WeTransfer delivery `wetransfer_website-images_2026-09-20_2131`. The exact service-to-image mapping is recorded in `data/service-portfolio-images.json`; the site never loads remote portfolio image URLs at runtime. Verify rights and current use with Bambï Beauty before public launch. Older Booksy files are retained only as inactive historical assets.
 
 The local preview stores an appointment request on the device. It does not inspect live availability, confirm a slot, collect the 50% deposit, or publish products to Shopify. A configured booking app must own live slots and confirmation.
 
@@ -52,14 +52,14 @@ No framework preset is required. `cleanUrls` is enabled and no SPA fallback is u
 1. Run `npm run package`.
 2. In Shopify Admin, open Online Store → Themes → Add theme → Upload zip file.
 3. Upload `bambi-studio-theme.zip` and preview it before publishing.
-4. In Shopify Admin, use Products → Import to upload `data/shopify-services.csv`. Its seven draft products already contain the exact service names, prices, durations, descriptions, inclusions and preparation details captured from Booksy on 20 September 2026. Add the imported products to a services collection.
+4. In Shopify Admin, use Products → Import to upload `data/shopify-services.csv`. Its seven draft products contain the current merchant-supplied service names and prices. Add the imported products to a services collection.
 5. Create product metafields:
    - `custom.duration` for the confirmed duration.
    - `custom.inclusions` for confirmed service inclusions.
    - `custom.preparation` for the service-specific arrival guidance.
 6. Choose the services collection in the Header and Featured services sections.
 7. Create About, Preparation and Contact pages and assign their matching templates.
-8. Verify the captured service facts, policies, preparation rules, location and hours against the business's current records before publishing; update only if the business confirms that a fact has changed.
+8. Confirm durations, policies, preparation rules, location and hours against the business's current records before publishing. The catalogue intentionally uses `Timing confirmed after request` until the merchant supplies confirmed durations.
 
 The product form stores preferred date, time, optional stylist, notes and preparation acknowledgement as Shopify line-item properties. The cart surfaces these properties.
 
