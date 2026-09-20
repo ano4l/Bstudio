@@ -8,17 +8,17 @@
     {% if collection != blank %}
       {% for product in collection.products limit: section.settings.limit %}
         {% liquid
-          assign fallback_asset = 'studio-wave.png'
+          assign fallback_asset = 'booksy-services/half-up-half-down.jpeg'
           assign image_alt = product.featured_image.alt | default: product.title
           case forloop.index
             when 1
-              assign fallback_asset = 'studio-detail.png'
+              assign fallback_asset = 'booksy-services/frontal-ponytail-client-hair.jpeg'
             when 2
-              assign fallback_asset = 'studio-curly-install.jpg'
+              assign fallback_asset = 'booksy-services/hd-lace-lagos-frontal-ponytail.jpeg'
             when 3
-              assign fallback_asset = 'studio-bob.png'
+              assign fallback_asset = 'booksy-services/basic-installation-straightening.jpeg'
             when 4
-              assign fallback_asset = 'studio-curls.png'
+              assign fallback_asset = 'booksy-services/frontal-ponytail-including-hair.jpeg'
           endcase
         %}
         <a class="service-card" href="{{ product.url }}">
@@ -27,7 +27,7 @@
             {% if product.featured_image != blank %}
               {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '180, 360, 600', sizes: '90px', alt: image_alt }}
             {% else %}
-              <img src="{{ fallback_asset | asset_url }}" alt="Bambï Studio finish for {{ product.title | escape }}" width="180" height="220" loading="lazy">
+              <img src="{{ fallback_asset | asset_url }}" alt="Bambï Beauty finish for {{ product.title | escape }}" width="180" height="220" loading="lazy">
             {% endif %}
           </span>
           <h3>{{ product.title }}</h3>
@@ -39,19 +39,19 @@
     {% else %}
       {% for block in section.blocks %}
         {% liquid
-          assign fallback_asset = 'studio-detail.png'
+          assign fallback_asset = 'booksy-services/frontal-ponytail-client-hair.jpeg'
           case forloop.index
             when 2
-              assign fallback_asset = 'studio-curly-install.jpg'
+              assign fallback_asset = 'booksy-services/hd-lace-lagos-frontal-ponytail.jpeg'
             when 3
-              assign fallback_asset = 'studio-bob.png'
+              assign fallback_asset = 'booksy-services/basic-installation-straightening.jpeg'
             when 4
-              assign fallback_asset = 'studio-curls.png'
+              assign fallback_asset = 'booksy-services/frontal-ponytail-including-hair.jpeg'
           endcase
         %}
         <a class="service-card" href="{{ routes.collections_url }}" {{ block.shopify_attributes }}>
           <span class="num">0{{ forloop.index }}</span>
-          <span class="service-thumb"><img src="{{ fallback_asset | asset_url }}" alt="Bambï Studio finish for {{ block.settings.title | escape }}" width="180" height="220" loading="lazy"></span>
+          <span class="service-thumb"><img src="{{ fallback_asset | asset_url }}" alt="Bambï Beauty finish for {{ block.settings.title | escape }}" width="180" height="220" loading="lazy"></span>
           <h3>{{ block.settings.title }}</h3>
           <p>{{ block.settings.text }}</p>
           <span class="service-meta"><small>View service</small></span>

@@ -32,6 +32,7 @@ const required = [
   "assets/studio-curls.png",
   "assets/studio-detail.png",
   "assets/studio-wave.png",
+  "data/booksy-service-images.json",
   "config/settings_schema.json",
   "config/settings_data.json",
   "locales/en.default.json",
@@ -83,13 +84,8 @@ const hero = fs.readFileSync(
     .filter((x) => x.endsWith(".html"))
     .map((x) => fs.readFileSync(path.join(root, "preview", x), "utf8"))
     .join("\n");
-if (
-  !hero.includes("studio-curly-install.jpg") ||
-  !previewHome.includes("studio-curly-install.jpg")
-)
-  errors.push(
-    "Studio hero is not using the differentiated curly-install image",
-  );
+if (!hero.includes("booksy-services/bambi-beauty-business.jpeg") || !previewHome.includes("booksy-services/bambi-beauty-business.jpeg"))
+  errors.push("Home hero is not using the local Bambï Beauty business image");
 if (hero.includes("studio-hero.png") || previewHome.includes("studio-hero.png"))
   errors.push("Deprecated retail hero reference remains");
 for (const token of [
@@ -124,19 +120,38 @@ if (previewServiceCards.length !== services.length)
     `Expected ${services.length} static service cards, found ${previewServiceCards.length}`,
   );
 for (const [index, match] of previewServiceCards.entries()) {
-  if (!/<img\s+[\s\S]*?src="\.\.\/assets\/[^\"]+"[\s\S]*?>/.test(match[0]))
+  if (!/<img\s+[\s\S]*?src="\.\.\/assets\/booksy-services\/[^\"]+"[\s\S]*?>/.test(match[0]))
     errors.push(`Static service card ${index + 1} is missing a local image`);
   const alt = match[0].match(/<img\s+[\s\S]*?alt="([^"]*)"[\s\S]*?>/)?.[1]?.trim();
   if (!alt || alt.length < 12)
     errors.push(`Static service card ${index + 1} is missing meaningful alt text`);
 }
+const imageManifest = JSON.parse(fs.readFileSync(path.join(root, "data/booksy-service-images.json"), "utf8"));
+if (Object.keys(imageManifest.services || {}).length !== services.length)
+  errors.push("Booksy service image manifest must map exactly seven services");
+for (const [slug, service] of Object.entries(imageManifest.services || {})) {
+  if (!fs.existsSync(path.join(root, "assets", service.asset))) errors.push(`Missing local service image for ${slug}`);
+  if (!service.sourceUrl?.includes("d375139ucebi94.cloudfront.net")) errors.push(`Missing public provenance URL for ${slug}`);
+  if (!script.includes(`image: \"${service.asset}\"`)) errors.push(`Booking image does not match manifest for ${slug}`);
+}
+for (const source of [previewBundle, script, ...["sections/main-collection.liquid", "sections/featured-services.liquid", "sections/hero-studio.liquid"].map(file => fs.readFileSync(path.join(root, file), "utf8"))])
+  if (source.includes("d375139ucebi94.cloudfront.net")) errors.push("Booksy image URL must not be used at runtime");
 for (const liquidSection of ["sections/main-collection.liquid", "sections/featured-services.liquid"]) {
   const source = fs.readFileSync(path.join(root, liquidSection), "utf8");
   for (const token of ["product.featured_image", "image_tag", "fallback_asset", "asset_url", "alt:"])
     if (!source.includes(token))
       errors.push(`${liquidSection} is missing image fallback support: ${token}`);
 }
+for (const expectedAsset of Object.values(imageManifest.services).map(entry => entry.asset)) {
+  if (!fs.readFileSync(path.join(root, "sections/main-collection.liquid"), "utf8").includes(expectedAsset))
+    errors.push(`Shopify collection fallback missing ${expectedAsset}`);
+}
 const stylesheet = fs.readFileSync(path.join(root, "assets/studio.css"), "utf8");
+const packageScript = fs.readFileSync(path.join(root, "scripts/package.ps1"), "utf8");
+for (const token of ["-Recurse -File", "RelativePath", "DestinationDirectory"])
+  if (!packageScript.includes(token)) errors.push(`Theme package must retain nested Booksy assets: ${token}`);
+for (const token of ["--paper: #ede6d8", "--ivory: #f7f1e7", "--stone: #cdbfa9", "--black: #12110f"])
+  if (!stylesheet.includes(token)) errors.push(`Warm palette token missing: ${token}`);
 const catalogueFigureRule = stylesheet.match(
   /\.services-catalogue \.service-thumb\s*\{([\s\S]*?)\}/,
 )?.[1];
@@ -149,6 +164,27 @@ for (const legacy of ["#541d27", "#3c121a", "#d7b8b2", "--oxblood", "--wine", "-
   const sources = ["assets/studio.css", "config/settings_data.json", "config/settings_schema.json", ...fs.readdirSync(path.join(root,"preview")).filter(f=>f.endsWith(".html")).map(f=>`preview/${f}`)];
   if (sources.some(file=>fs.readFileSync(path.join(root,file),"utf8").includes(legacy))) errors.push(`Legacy palette or placeholder remains: ${legacy}`);
 }
+const brandFiles = [
+  "assets/studio.js",
+  "config/settings_schema.json",
+  ...fs.readdirSync(path.join(root, "sections")).filter((file) => file.endsWith(".liquid")).map((file) => `sections/${file}`),
+  ...fs.readdirSync(path.join(root, "preview")).filter((file) => file.endsWith(".html")).map((file) => `preview/${file}`),
+];
+const exactWordmark = "<strong>BAMBÏ BEAUTY</strong><small>BOOKINGS</small>";
+for (const file of brandFiles) {
+  const source = fs.readFileSync(path.join(root, file), "utf8");
+  if (/Bambï Studio|<small>\s*STUDIO\s*<\/small>/i.test(source))
+    errors.push(`Retired Bambï Studio branding remains in ${file}`);
+  for (const match of source.matchAll(/<a\s+class=["']wordmark["'][\s\S]*?<\/a>/gi))
+    if (!match[0].includes(exactWordmark))
+      errors.push(`Incorrect Bambï Beauty Bookings wordmark in ${file}`);
+}
+for (const file of ["sections/header.liquid", "sections/footer.liquid", "assets/studio.js"])
+  if (!fs.readFileSync(path.join(root, file), "utf8").includes(exactWordmark))
+    errors.push(`Required Bambï Beauty Bookings wordmark missing from ${file}`);
+const themeSettings = JSON.parse(fs.readFileSync(path.join(root, "config/settings_schema.json"), "utf8"));
+if (themeSettings[0]?.theme_name !== "Bambï Beauty Bookings")
+  errors.push("Shopify theme name must be Bambï Beauty Bookings");
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);

@@ -7,7 +7,7 @@
 <section class="catalogue services-catalogue">
   <header class="catalogue-intro">
     <div>
-      <p class="eyebrow">Bambï Studio · Service collection</p>
+      <p class="eyebrow">Bambï Beauty Bookings · Service collection</p>
       <h2>Choose your finish.</h2>
     </div>
     <p>Appointment times are reviewed after request. Product imagery is managed in Shopify.</p>
@@ -17,23 +17,23 @@
     {% paginate collection.products by 24 %}
       {% for product in collection.products %}
         {% liquid
-          assign fallback_asset = 'studio-wave.png'
+          assign fallback_asset = 'booksy-services/half-up-half-down.jpeg'
           assign image_alt = product.featured_image.alt | default: product.title
           case forloop.index
             when 1
-              assign fallback_asset = 'studio-detail.png'
+              assign fallback_asset = 'booksy-services/frontal-ponytail-client-hair.jpeg'
             when 2
-              assign fallback_asset = 'studio-wave.png'
+              assign fallback_asset = 'booksy-services/hd-lace-lagos-frontal-ponytail.jpeg'
             when 3
-              assign fallback_asset = 'studio-bob.png'
+              assign fallback_asset = 'booksy-services/basic-installation-straightening.jpeg'
             when 4
-              assign fallback_asset = 'studio-detail.png'
+              assign fallback_asset = 'booksy-services/frontal-ponytail-including-hair.jpeg'
             when 5
-              assign fallback_asset = 'studio-curly-install.jpg'
+              assign fallback_asset = 'booksy-services/installation-curling.jpeg'
             when 6
-              assign fallback_asset = 'studio-bob.png'
+              assign fallback_asset = 'booksy-services/bob-installation.jpeg'
             when 7
-              assign fallback_asset = 'studio-curls.png'
+              assign fallback_asset = 'booksy-services/half-up-half-down.jpeg'
           endcase
         %}
         <a class="service-card{% if forloop.first %} service-card-featured{% endif %}" href="{{ product.url }}">
@@ -41,7 +41,7 @@
             {% if product.featured_image != blank %}
               {{ product.featured_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '480, 720, 960, 1200, 1400', sizes: '(min-width: 900px) 50vw, 100vw', alt: image_alt }}
             {% else %}
-              <img src="{{ fallback_asset | asset_url }}" alt="Bambï Studio finish for {{ product.title | escape }}" width="900" height="1050" loading="lazy">
+              <img src="{{ fallback_asset | asset_url }}" alt="Bambï Beauty finish for {{ product.title | escape }}" width="900" height="1050" loading="lazy">
             {% endif %}
           </figure>
           <span class="num">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>

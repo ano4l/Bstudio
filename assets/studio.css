@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;600&display=swap");
 :root {
-  --black: #0b0b0a;
-  --ivory: #f2efe8;
-  --paper: #faf8f3;
-  --stone: #c9c3b8;
-  --ink: #0b0b0a;
-  --muted: #5f5b54;
-  --line: rgba(11, 11, 10, 0.22);
+  --black: #12110f;
+  --ivory: #f7f1e7;
+  --paper: #ede6d8;
+  --stone: #cdbfa9;
+  --ink: #12110f;
+  --muted: #5b5043;
+  --line: rgba(47, 39, 29, 0.26);
 
   --bone: var(--ivory);
   --serif: "Cormorant Garamond", Georgia, serif;
@@ -117,19 +117,21 @@ button {
 .wordmark {
   text-align: center;
   line-height: 1;
-  letter-spacing: 0.2em;
+  min-width: 218px;
 }
 .wordmark strong {
   display: block;
-  font: 600 29px var(--serif);
-  letter-spacing: 0.16em;
+  font: 600 27px var(--serif);
+  letter-spacing: 0.115em;
+  white-space: nowrap;
 }
 .wordmark small {
   display: block;
-  margin-top: 5px;
+  margin-top: 6px;
   font-size: 8px;
   font-weight: 600;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.34em;
+  padding-left: 0.34em;
 }
 .menu-toggle {
   display: none;
@@ -787,6 +789,17 @@ button {
   }
   .wordmark {
     grid-column: 2;
+    min-width: 0;
+  }
+  .wordmark strong {
+    font-size: clamp(18px, 4.8vw, 25px);
+    letter-spacing: 0.08em;
+  }
+  .wordmark small {
+    margin-top: 4px;
+    font-size: 7px;
+    letter-spacing: 0.27em;
+    padding-left: 0.27em;
   }
   .header-mobile-book {
     display: block !important;

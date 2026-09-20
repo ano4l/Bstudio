@@ -5,7 +5,7 @@
         title: "Frontal Ponytail Excluding Frontal And Bundles",
         price: "R1 150,00",
         duration: "2h 30min",
-        image: "studio-detail.png",
+        image: "booksy-services/frontal-ponytail-client-hair.jpeg",
         description:
           "Professional frontal ponytail installation and styling. Supply both the frontal and bundles, including a customised frontal.",
         prep: "Arrive with natural hair relaxed or blown out, with no oils or product.",
@@ -18,7 +18,7 @@
         title: "HD lace Lagos Frontal ponytail",
         price: "R3 350,00",
         duration: "2h 55min",
-        image: "studio-curly-install.jpg",
+        image: "booksy-services/hd-lace-lagos-frontal-ponytail.jpeg",
         description:
           "A complete Lagos-hairline frontal ponytail service with premium hair and customisation included.",
         prep: "Arrive with hair relaxed or blown out, with no oils or product.",
@@ -29,7 +29,7 @@
         title: "Basic Installation + Straightening",
         price: "R750,00",
         duration: "1h 35min",
-        image: "studio-detail.png",
+        image: "booksy-services/basic-installation-straightening.jpeg",
         description:
           "A streamlined appointment for a polished straight finish.",
         prep: "Bring your unit ready for installation.",
@@ -39,7 +39,7 @@
         title: "Frontal Ponytail Including Bundles And Frontal",
         price: "R2 200,00",
         duration: "2h 25min",
-        image: "studio-wave.png",
+        image: "booksy-services/frontal-ponytail-including-hair.jpeg",
         description:
           "A complete frontal ponytail service with the frontal, bundles, customisation and styling included.",
         prep: "Arrive with natural hair relaxed or blown out, with no oils or product.",
@@ -50,7 +50,7 @@
         title: "Installation + Curling",
         price: "R950,00",
         duration: "1h 50min",
-        image: "studio-curls.png",
+        image: "booksy-services/installation-curling.jpeg",
         description:
           "Installation and curled styling for a finished, dimensional look.",
         prep: "Arrive with wig lines already done.",
@@ -61,7 +61,7 @@
         title: "Bob Installation, Curls Or Straight, 10–14” inch",
         price: "R670,00",
         duration: "1h 30min",
-        image: "studio-bob.png",
+        image: "booksy-services/bob-installation.jpeg",
         description: "A focused bob installation finished curled or straight.",
         prep: "Arrive with wig lines already done.",
         includes:
@@ -71,7 +71,7 @@
         title: "Half Up Half Down With A Wig",
         price: "R1 230,00",
         duration: "2h 10min",
-        image: "studio-wave.png",
+        image: "booksy-services/half-up-half-down.jpeg",
         description:
           "A styled wig installation with a half-up, half-down finish.",
         prep: "Arrive with wig lines already done.",
@@ -247,6 +247,6 @@
   if (!document.querySelector(".footer"))
     document.body.insertAdjacentHTML(
       "beforeend",
-      '<footer class="footer"><div class="footer-grid"><div><a class="wordmark" href="index.html"><strong>BAMBÏ</strong><small>STUDIO</small></a><p>Luxury hair services by appointment only.</p></div><div><h3>Studio</h3><a href="services.html">Services</a><a href="preparation.html">Preparation</a></div><div><h3>Visit</h3><span>Workpods Midrand<br>Cnr. Brand Road &amp; Swart Dr<br>President Park AH, 1685</span></div></div></footer>',
+      '<footer class="footer"><div class="footer-grid"><div><a class="wordmark" href="index.html"><strong>BAMBÏ BEAUTY</strong><small>BOOKINGS</small></a><p>Luxury hair services by appointment only.</p></div><div><h3>Studio</h3><a href="services.html">Services</a><a href="preparation.html">Preparation</a></div><div><h3>Visit</h3><span>Workpods Midrand<br>Cnr. Brand Road &amp; Swart Dr<br>President Park AH, 1685</span></div></div></footer>',
     );
 })();

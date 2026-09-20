@@ -1,8 +1,12 @@
-# Bambï Studio
+# Bambï Beauty Bookings
 
 ## Booksy catalogue migration (captured 20 September 2026)
 
 The seven-service catalogue in `data/shopify-services.csv` was transcribed from the published Bambï Beauty Booksy listing. In Shopify Admin, go to **Products → Import**, upload that CSV, review the seven draft products, add them to the services collection, assign imagery, and only then publish. The CSV includes price plus `custom.duration`, `custom.inclusions`, and `custom.preparation` metafield columns. Create matching product metafield definitions if Shopify prompts for them.
+
+## Public portfolio image provenance
+
+The local files in `assets/booksy-services/` are public Bambï Beauty portfolio images captured from the supplied Booksy listing on 20 September 2026. The exact service-to-image mapping and original public URLs are recorded in `data/booksy-service-images.json`; the site never loads Booksy image URLs at runtime. Verify rights and current use with Bambï Beauty before public launch.
 
 The local preview stores an appointment request on the device. It does not inspect live availability, confirm a slot, collect the 50% deposit, or publish products to Shopify. A configured booking app must own live slots and confirmation.
 
@@ -68,5 +72,5 @@ The product section includes a Shopify `@app` block. Install and configure Sesam
 - Verify all seven imported service records and prices against the current business records.
 - Confirm that the captured appointment and deposit policies remain current.
 - Confirm that the captured Workpods Midrand location and operating hours remain current.
-- Configure the final Bambï Beauty URL before turning the sister-store label into a link.
+- Configure the final Bambï Beauty shop URL before turning the hair-collection label into a link.
 - Test mobile navigation, keyboard behavior, booking-app integration and real Shopify checkout.
