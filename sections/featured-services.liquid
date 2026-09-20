@@ -1,2 +1,67 @@
-<section class="section services"><div class="section-head"><div><p class="eyebrow">The treatment menu</p><h2>{{ section.settings.heading }}</h2></div><p>{{ section.settings.text }}</p></div><div class="service-menu">{% assign collection = section.settings.collection %}{% if collection != blank %}{% for product in collection.products limit: section.settings.limit %}<a class="service-card" href="{{ product.url }}"><span class="num">0{{ forloop.index }}</span><h3>{{ product.title }}</h3><p>{{ product.description | strip_html | truncate: 100 }}</p><span class="service-meta">{% if product.metafields.custom.duration != blank %}{{ product.metafields.custom.duration }} · {% endif %}{{ product.price | money }}</span><span class="service-arrow">→</span></a>{% endfor %}{% else %}{% for block in section.blocks %}<a class="service-card" href="{{ routes.collections_url }}" {{ block.shopify_attributes }}><span class="num">0{{ forloop.index }}</span><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p><span class="service-meta">Price set in Shopify</span><span class="service-arrow">→</span></a>{% endfor %}{% endif %}</div></section>
-{% schema %}{"name":"Featured services","settings":[{"type":"text","id":"heading","default":"Signature services","label":"Heading"},{"type":"textarea","id":"text","default":"Every appointment begins with the right service and ends with a finish tailored to you.","label":"Intro"},{"type":"collection","id":"collection","label":"Services collection"},{"type":"range","id":"limit","min":2,"max":8,"step":1,"default":4,"label":"Services shown"}],"blocks":[{"type":"service","name":"Demo service","settings":[{"type":"text","id":"title","label":"Title","default":"Signature Frontal Install"},{"type":"textarea","id":"text","label":"Text","default":"A precise, polished installation with a considered finish."}]}],"presets":[{"name":"Featured services","blocks":[{"type":"service"},{"type":"service","settings":{"title":"Glueless Unit Fitting"}},{"type":"service","settings":{"title":"Closure Install"}},{"type":"service","settings":{"title":"Refresh & Restyle"}}]}]}{% endschema %}
+<section class="section services">
+  <div class="section-head">
+    <div><p class="eyebrow">The treatment menu</p><h2>{{ section.settings.heading }}</h2></div>
+    <p>{{ section.settings.text }}</p>
+  </div>
+  <div class="service-menu">
+    {% assign collection = section.settings.collection %}
+    {% if collection != blank %}
+      {% for product in collection.products limit: section.settings.limit %}
+        {% liquid
+          assign fallback_asset = 'studio-wave.png'
+          assign image_alt = product.featured_image.alt | default: product.title
+          case forloop.index
+            when 1
+              assign fallback_asset = 'studio-detail.png'
+            when 2
+              assign fallback_asset = 'studio-curly-install.jpg'
+            when 3
+              assign fallback_asset = 'studio-bob.png'
+            when 4
+              assign fallback_asset = 'studio-curls.png'
+          endcase
+        %}
+        <a class="service-card" href="{{ product.url }}">
+          <span class="num">0{{ forloop.index }}</span>
+          <span class="service-thumb">
+            {% if product.featured_image != blank %}
+              {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '180, 360, 600', sizes: '90px', alt: image_alt }}
+            {% else %}
+              <img src="{{ fallback_asset | asset_url }}" alt="Bambï Studio finish for {{ product.title | escape }}" width="180" height="220" loading="lazy">
+            {% endif %}
+          </span>
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.description | strip_html | truncate: 100 }}</p>
+          <span class="service-meta">{% if product.metafields.custom.duration != blank %}<b>{{ product.metafields.custom.duration }}</b>{% endif %}<small>{{ product.price | money }}</small></span>
+          <span class="service-arrow">→</span>
+        </a>
+      {% endfor %}
+    {% else %}
+      {% for block in section.blocks %}
+        {% liquid
+          assign fallback_asset = 'studio-detail.png'
+          case forloop.index
+            when 2
+              assign fallback_asset = 'studio-curly-install.jpg'
+            when 3
+              assign fallback_asset = 'studio-bob.png'
+            when 4
+              assign fallback_asset = 'studio-curls.png'
+          endcase
+        %}
+        <a class="service-card" href="{{ routes.collections_url }}" {{ block.shopify_attributes }}>
+          <span class="num">0{{ forloop.index }}</span>
+          <span class="service-thumb"><img src="{{ fallback_asset | asset_url }}" alt="Bambï Studio finish for {{ block.settings.title | escape }}" width="180" height="220" loading="lazy"></span>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+          <span class="service-meta"><small>View service</small></span>
+          <span class="service-arrow">→</span>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{"name":"Featured services","settings":[{"type":"text","id":"heading","default":"Signature services","label":"Heading"},{"type":"textarea","id":"text","default":"Every appointment begins with the right service and ends with a finish tailored to you.","label":"Intro"},{"type":"collection","id":"collection","label":"Services collection"},{"type":"range","id":"limit","min":2,"max":8,"step":1,"default":4,"label":"Services shown"}],"blocks":[{"type":"service","name":"Demo service","settings":[{"type":"text","id":"title","label":"Title","default":"Signature Frontal Install"},{"type":"textarea","id":"text","label":"Text","default":"A precise, polished installation with a considered finish."}]}],"presets":[{"name":"Featured services","blocks":[{"type":"service"},{"type":"service","settings":{"title":"Glueless Unit Fitting"}},{"type":"service","settings":{"title":"Closure Install"}},{"type":"service","settings":{"title":"Refresh & Restyle"}}]}]}
+{% endschema %}

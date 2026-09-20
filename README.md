@@ -1,5 +1,11 @@
 # Bambï Studio
 
+## Booksy catalogue migration (captured 20 September 2026)
+
+The seven-service catalogue in `data/shopify-services.csv` was transcribed from the published Bambï Beauty Booksy listing. In Shopify Admin, go to **Products → Import**, upload that CSV, review the seven draft products, add them to the services collection, assign imagery, and only then publish. The CSV includes price plus `custom.duration`, `custom.inclusions`, and `custom.preparation` metafield columns. Create matching product metafield definitions if Shopify prompts for them.
+
+The local preview stores an appointment request on the device. It does not inspect live availability, confirm a slot, collect the 50% deposit, or publish products to Shopify. A configured booking app must own live slots and confirmation.
+
 An editorial appointment-request website with two distinct delivery paths:
 
 - `dist/` is the seven-page static website for Vercel.
@@ -42,13 +48,14 @@ No framework preset is required. `cleanUrls` is enabled and no SPA fallback is u
 1. Run `npm run package`.
 2. In Shopify Admin, open Online Store → Themes → Add theme → Upload zip file.
 3. Upload `bambi-studio-theme.zip` and preview it before publishing.
-4. Create a collection for installation services and add each service as a Shopify product.
+4. In Shopify Admin, use Products → Import to upload `data/shopify-services.csv`. Its seven draft products already contain the exact service names, prices, durations, descriptions, inclusions and preparation details captured from Booksy on 20 September 2026. Add the imported products to a services collection.
 5. Create product metafields:
    - `custom.duration` for the confirmed duration.
    - `custom.inclusions` for confirmed service inclusions.
+   - `custom.preparation` for the service-specific arrival guidance.
 6. Choose the services collection in the Header and Featured services sections.
 7. Create About, Preparation and Contact pages and assign their matching templates.
-8. Replace all demo copy with confirmed prices, policies, preparation rules, location and hours.
+8. Verify the captured service facts, policies, preparation rules, location and hours against the business's current records before publishing; update only if the business confirms that a fact has changed.
 
 The product form stores preferred date, time, optional stylist, notes and preparation acknowledgement as Shopify line-item properties. The cart surfaces these properties.
 
@@ -58,8 +65,8 @@ The product section includes a Shopify `@app` block. Install and configure Sesam
 
 ## Final production checks
 
-- Configure actual service content and prices.
-- Replace policy placeholders with confirmed merchant policies.
-- Add location and hours only when confirmed.
+- Verify all seven imported service records and prices against the current business records.
+- Confirm that the captured appointment and deposit policies remain current.
+- Confirm that the captured Workpods Midrand location and operating hours remain current.
 - Configure the final Bambï Beauty URL before turning the sister-store label into a link.
 - Test mobile navigation, keyboard behavior, booking-app integration and real Shopify checkout.

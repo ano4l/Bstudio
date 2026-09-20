@@ -1,2 +1,71 @@
-<section class="page-hero"><p class="eyebrow">The treatment menu</p><h1>{{ collection.title | default: 'Studio services' }}</h1><p>{{ collection.description | default: 'Choose the service that meets your unit, your routine and your preferred finish.' }}</p></section><section class="catalogue"><div class="catalogue-note">Curated services · Appointment times reviewed after request</div><div class="service-menu">{% paginate collection.products by 24 %}{% for product in collection.products %}<a class="service-card" href="{{ product.url }}"><span class="num">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><h3>{{ product.title }}</h3><p>{{ product.description | strip_html | truncate: 105 }}</p><span class="service-meta">{% if product.metafields.custom.duration != blank %}{{ product.metafields.custom.duration }} · {% endif %}{{ product.price | money }}</span><span class="service-arrow">→</span></a>{% else %}<div class="empty-state"><h2>Services are being prepared.</h2><p>Add service products to this collection in Shopify admin.</p></div>{% endfor %}{{ paginate | default_pagination }}{% endpaginate %}</div></section>
-{% schema %}{"name":"Service collection","settings":[]}{% endschema %}
+<section class="page-hero">
+  <p class="eyebrow">The treatment menu</p>
+  <h1>{{ collection.title | default: 'Studio services' }}</h1>
+  <p>{{ collection.description | default: 'Choose the service that meets your unit, your routine and your preferred finish.' }}</p>
+</section>
+
+<section class="catalogue services-catalogue">
+  <header class="catalogue-intro">
+    <div>
+      <p class="eyebrow">Bambï Studio · Service collection</p>
+      <h2>Choose your finish.</h2>
+    </div>
+    <p>Appointment times are reviewed after request. Product imagery is managed in Shopify.</p>
+  </header>
+
+  <div class="service-menu lookbook-grid">
+    {% paginate collection.products by 24 %}
+      {% for product in collection.products %}
+        {% liquid
+          assign fallback_asset = 'studio-wave.png'
+          assign image_alt = product.featured_image.alt | default: product.title
+          case forloop.index
+            when 1
+              assign fallback_asset = 'studio-detail.png'
+            when 2
+              assign fallback_asset = 'studio-wave.png'
+            when 3
+              assign fallback_asset = 'studio-bob.png'
+            when 4
+              assign fallback_asset = 'studio-detail.png'
+            when 5
+              assign fallback_asset = 'studio-curly-install.jpg'
+            when 6
+              assign fallback_asset = 'studio-bob.png'
+            when 7
+              assign fallback_asset = 'studio-curls.png'
+          endcase
+        %}
+        <a class="service-card{% if forloop.first %} service-card-featured{% endif %}" href="{{ product.url }}">
+          <figure class="service-thumb">
+            {% if product.featured_image != blank %}
+              {{ product.featured_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '480, 720, 960, 1200, 1400', sizes: '(min-width: 900px) 50vw, 100vw', alt: image_alt }}
+            {% else %}
+              <img src="{{ fallback_asset | asset_url }}" alt="Bambï Studio finish for {{ product.title | escape }}" width="900" height="1050" loading="lazy">
+            {% endif %}
+          </figure>
+          <span class="num">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+          <div class="service-card-copy">
+            <h3>{{ product.title }}</h3>
+            <span class="service-details">{{ product.description | strip_html | truncate: 190 }}</span>
+          </div>
+          <span class="service-meta">
+            <strong>{{ product.price | money }}</strong>
+            {% if product.metafields.custom.duration != blank %}<b>{{ product.metafields.custom.duration }}</b>{% endif %}
+          </span>
+          <span class="service-book">View service <i aria-hidden="true">↗</i></span>
+        </a>
+      {% else %}
+        <div class="empty-state">
+          <h2>Services are being prepared.</h2>
+          <p>Add service products to this collection in Shopify admin.</p>
+        </div>
+      {% endfor %}
+      {{ paginate | default_pagination }}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{"name":"Service collection","settings":[]}
+{% endschema %}
