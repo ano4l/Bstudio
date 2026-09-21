@@ -2579,3 +2579,60 @@ body {
 .site-header small,
 .site-header .menu-toggle { color: var(--bone); }
 .site-header .header-cta { border-color: rgba(255, 255, 255, 0.65); }
+
+/* Mobile reference composition: masthead, edge-to-edge portrait, then the editorial panel. */
+@media (max-width: 600px) {
+  .hero {
+    display: block;
+    min-height: 0;
+  }
+  .hero-copy {
+    display: none;
+  }
+  .hero-visual {
+    min-height: 0;
+    padding: 0;
+  }
+  .hero-frame {
+    height: clamp(500px, 78svh, 680px);
+    min-height: 0;
+    border: 0;
+  }
+  .hero-frame::after {
+    display: none;
+  }
+  .hero-frame img {
+    object-position: center 38%;
+  }
+  .editorial {
+    display: block;
+  }
+  .editorial-image {
+    display: none;
+  }
+  .editorial-copy {
+    padding: 58px 22px 64px;
+  }
+  .editorial-copy .eyebrow {
+    margin-bottom: 28px;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+  }
+  .editorial-phrase {
+    max-width: 8ch;
+    margin: 0 0 24px;
+    font-size: clamp(58px, 16vw, 76px);
+    line-height: 0.84;
+  }
+  .editorial-copy > p:not(.eyebrow) {
+    max-width: 31ch;
+    margin-bottom: 32px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .editorial-cta {
+    display: inline-flex;
+    min-width: min(100%, 300px);
+    justify-content: space-between;
+  }
+}

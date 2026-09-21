@@ -8,7 +8,7 @@
     {% if collection != blank %}
       {% for product in collection.products limit: section.settings.limit %}
         {% liquid
-          assign fallback_asset = 'service-portfolio/clean-straightening-face-blurred.png'
+          assign fallback_asset = 'service-portfolio/straightening-replacement.jpeg'
           assign image_alt = product.featured_image.alt | default: product.title
           case forloop.index
             when 1
@@ -18,7 +18,7 @@
             when 3
               assign fallback_asset = 'service-portfolio/image00010.jpeg'
             when 4
-              assign fallback_asset = 'service-portfolio/clean-straightening-face-blurred.png'
+              assign fallback_asset = 'service-portfolio/straightening-replacement.jpeg'
             when 5
               assign fallback_asset = 'service-portfolio/image00015.jpeg'
             when 6
@@ -52,7 +52,7 @@
             when 3
               assign fallback_asset = 'service-portfolio/image00010.jpeg'
             when 4
-              assign fallback_asset = 'service-portfolio/clean-straightening-face-blurred.png'
+          assign fallback_asset = 'service-portfolio/straightening-replacement.jpeg'
             when 5
               assign fallback_asset = 'service-portfolio/image00015.jpeg'
             when 6
