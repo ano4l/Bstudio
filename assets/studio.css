@@ -260,7 +260,7 @@ button {
   content: "";
   position: absolute;
   inset: 18px;
-  border: 1px solid rgba(243, 237, 227, 0.5);
+  border: 1px solid var(--black);
   pointer-events: none;
 }
 .hero-note {
@@ -381,6 +381,23 @@ button {
   font: italic 400 clamp(45px, 5.5vw, 84px) / 1.02 var(--serif);
   color: var(--stone);
   margin: 0 0 28px;
+}
+.studio-feature {
+  background: var(--ivory);
+  color: var(--ink);
+}
+.studio-feature .editorial-image {
+  min-height: 760px;
+}
+.studio-feature .editorial-image img {
+  object-position: center 52%;
+}
+.studio-feature .editorial-copy p:not(.eyebrow) {
+  color: var(--muted);
+}
+.studio-feature .editorial-phrase {
+  color: var(--ink);
+  font-style: normal;
 }
 .process {
   background: var(--bone);
@@ -942,6 +959,10 @@ button {
   }
   .editorial-image {
     height: 480px;
+  }
+  .studio-feature .editorial-image {
+    height: 620px;
+    min-height: 0;
   }
   .editorial-copy {
     padding: 65px 22px;
@@ -1683,16 +1704,18 @@ body {
 }
 .service-card {
   grid-template-columns:
-    35px 84px minmax(200px, 1fr) minmax(220px, 0.65fr)
+    35px 116px minmax(200px, 1fr) minmax(220px, 0.65fr)
     170px 30px;
-  padding: 18px 8px;
+  padding: 22px 8px;
 }
 .service-thumb {
   display: block;
-  width: 84px;
-  height: 104px;
+  width: 116px;
+  height: 138px;
   overflow: hidden;
   background: var(--bone);
+  border: 1px solid rgba(18, 17, 15, 0.22);
+  box-shadow: 4px 4px 0 rgba(18, 17, 15, 0.08);
 }
 .service-thumb img {
   height: 100%;
@@ -1855,8 +1878,8 @@ body {
     display: none;
   }
   .service-thumb {
-    width: 70px;
-    height: 88px;
+    width: 92px;
+    height: 112px;
   }
   .service-meta {
     grid-column: auto;
@@ -1919,12 +1942,12 @@ body {
     margin-top: 24px;
   }
   .service-card {
-    grid-template-columns: 24px 58px 1fr 20px;
+    grid-template-columns: 24px 82px 1fr 20px;
     gap: 10px;
   }
   .service-thumb {
-    width: 58px;
-    height: 74px;
+    width: 82px;
+    height: 102px;
   }
   .service-card h3 {
     font-size: 22px;
@@ -2609,7 +2632,8 @@ body {
     border: 0;
   }
   .hero-frame::after {
-    display: none;
+    display: block;
+    inset: 18px;
   }
   .hero-frame img {
     object-position: center 38%;
