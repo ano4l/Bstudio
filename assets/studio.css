@@ -412,7 +412,6 @@ button {
   border: 0;
   box-shadow: none;
   border-radius: 12px;
-  transform: scaleX(-1);
   object-position: center 20%;
 }
 .studio-feature .editorial-copy p:not(.eyebrow) {
