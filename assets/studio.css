@@ -2640,6 +2640,7 @@ body {
   }
   .editorial {
     display: block;
+    min-height: 0;
   }
   .editorial-image {
     display: none;
