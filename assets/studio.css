@@ -271,7 +271,7 @@ button {
 .hero-image-cta {
   position: absolute;
   left: 50%;
-  top: 62%;
+  top: 68%;
   transform: translateX(-50%);
   z-index: 2;
   display: inline-flex;
@@ -279,9 +279,9 @@ button {
   gap: 18px;
   min-height: 0;
   padding: 8px;
-  border: 1px solid rgba(18, 17, 15, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.78);
   background: transparent;
-  color: var(--ink);
+  color: #fff;
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.15em;
@@ -2660,7 +2660,7 @@ body {
   }
   .hero-image-cta {
     left: 50%;
-    top: 62%;
+    top: 68%;
     min-height: 0;
     padding: 8px;
     font-size: 8px;
