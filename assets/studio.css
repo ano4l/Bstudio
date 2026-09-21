@@ -2580,6 +2580,16 @@ body {
 .site-header .menu-toggle { color: var(--bone); }
 .site-header .header-cta { border-color: rgba(255, 255, 255, 0.65); }
 
+@media (max-width: 600px) {
+  /* The phone reference opens on the portrait, then lands directly on the editorial panel. */
+  .hero { display: block; min-height: 0; }
+  .hero-copy { display: none; }
+  .hero-visual { display: block; min-height: 0; }
+  .hero-frame { min-height: 0; aspect-ratio: 0.62; }
+  .hero-frame img { height: 100%; object-fit: cover; }
+  .editorial.reveal-item { opacity: 1; transform: none; }
+}
+
 /* Mobile reference composition: masthead, edge-to-edge portrait, then the editorial panel. */
 @media (max-width: 600px) {
   .hero {
