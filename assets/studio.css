@@ -406,7 +406,7 @@ button {
 }
 .studio-feature .editorial-image img {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   background: var(--stone);
   border: 1px solid rgba(18, 17, 15, 0.24);
   box-shadow: 8px 8px 0 rgba(18, 17, 15, 0.1);
