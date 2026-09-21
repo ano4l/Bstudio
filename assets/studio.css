@@ -378,8 +378,18 @@ button {
   color: var(--stone);
   margin: 0 0 28px;
 }
+.editorial-cta {
+  width: fit-content;
+  min-height: 64px;
+  justify-content: space-between;
+  padding-inline: 28px;
+}
 .services .service-card:nth-child(even) {
   background: var(--ivory);
+}
+.services .service-card:hover,
+.services .service-card:focus-visible {
+  background: var(--paper);
 }
 .services .service-card:nth-child(even):hover,
 .services .service-card:nth-child(even):focus-visible {
@@ -460,7 +470,7 @@ button {
 }
 .sister {
   padding: 72px 7vw;
-  background: var(--stone);
+  background: #d8ccb9;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -2669,7 +2679,10 @@ body {
   }
   .editorial-cta {
     display: inline-flex;
-    min-width: min(100%, 300px);
+    width: fit-content;
+    min-width: 0;
+    min-height: 56px;
+    padding-inline: 22px;
     justify-content: space-between;
   }
 }
