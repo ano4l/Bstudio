@@ -268,31 +268,6 @@ button {
   letter-spacing: 0.21em;
   text-transform: uppercase;
 }
-.hero-image-cta {
-  position: absolute;
-  left: 50%;
-  top: 68%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  min-height: 0;
-  padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  background: transparent;
-  color: #fff;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  transition: background-color var(--motion-fast) ease, transform var(--motion-fast) ease;
-}
-.hero-image-cta:hover,
-.hero-image-cta:focus-visible {
-  background: transparent;
-  transform: translate(-50%, -2px);
-}
 .hero-number {
   position: absolute;
   left: -24px;
@@ -402,6 +377,13 @@ button {
   font: italic 400 clamp(45px, 5.5vw, 84px) / 1.02 var(--serif);
   color: var(--stone);
   margin: 0 0 28px;
+}
+.services .service-card:nth-child(even) {
+  background: var(--ivory);
+}
+.services .service-card:nth-child(even):hover,
+.services .service-card:nth-child(even):focus-visible {
+  background: var(--ivory);
 }
 .studio-feature {
   background: var(--ivory);
@@ -2657,13 +2639,6 @@ body {
   }
   .hero-frame img {
     object-position: center 38%;
-  }
-  .hero-image-cta {
-    left: 50%;
-    top: 68%;
-    min-height: 0;
-    padding: 8px;
-    font-size: 8px;
   }
   .editorial {
     display: block;
