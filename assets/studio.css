@@ -477,7 +477,9 @@ button {
 }
 .sister {
   padding: 72px 7vw;
-  background: #d8ccb9;
+  background: #d0c1ac;
+  border-top: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -2664,6 +2666,9 @@ body {
   }
   .editorial-image {
     display: none;
+  }
+  .studio-feature .editorial-image {
+    display: block;
   }
   .editorial-copy {
     padding: 58px 22px 64px;
