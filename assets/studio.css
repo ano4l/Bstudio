@@ -412,7 +412,8 @@ button {
   border: 0;
   box-shadow: none;
   border-radius: 12px;
-  object-position: center 52%;
+  transform: scaleX(-1);
+  object-position: center 20%;
 }
 .studio-feature .editorial-copy p:not(.eyebrow) {
   color: var(--muted);
