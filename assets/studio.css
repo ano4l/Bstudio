@@ -257,11 +257,7 @@ button {
   animation: quietZoom 1.6s ease-out both;
 }
 .hero-frame:after {
-  content: "";
-  position: absolute;
-  inset: 18px;
-  border: 1px solid var(--black);
-  pointer-events: none;
+  display: none;
 }
 .hero-note {
   position: absolute;
@@ -274,16 +270,17 @@ button {
 }
 .hero-image-cta {
   position: absolute;
-  left: 24px;
-  bottom: 24px;
+  left: 50%;
+  top: 62%;
+  transform: translateX(-50%);
   z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 18px;
-  min-height: 42px;
-  padding: 0 15px;
+  min-height: 0;
+  padding: 8px;
   border: 1px solid rgba(18, 17, 15, 0.62);
-  background: rgba(243, 237, 227, 0.86);
+  background: transparent;
   color: var(--ink);
   font-size: 9px;
   font-weight: 600;
@@ -293,8 +290,8 @@ button {
 }
 .hero-image-cta:hover,
 .hero-image-cta:focus-visible {
-  background: var(--ivory);
-  transform: translateY(-2px);
+  background: transparent;
+  transform: translate(-50%, -2px);
 }
 .hero-number {
   position: absolute;
@@ -2656,17 +2653,16 @@ body {
     border: 0;
   }
   .hero-frame::after {
-    display: block;
-    inset: 18px;
+    display: none;
   }
   .hero-frame img {
     object-position: center 38%;
   }
   .hero-image-cta {
-    left: 20px;
-    bottom: 20px;
-    min-height: 40px;
-    padding-inline: 13px;
+    left: 50%;
+    top: 62%;
+    min-height: 0;
+    padding: 8px;
     font-size: 8px;
   }
   .editorial {
