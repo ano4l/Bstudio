@@ -400,7 +400,8 @@ button {
   color: var(--ink);
 }
 .studio-feature .editorial-image {
-  min-height: 760px;
+  min-height: 0;
+  aspect-ratio: 1;
   padding: 30px;
   background: var(--paper);
 }
@@ -408,8 +409,9 @@ button {
   width: 100%;
   object-fit: cover;
   background: var(--stone);
-  border: 1px solid rgba(18, 17, 15, 0.24);
-  box-shadow: 8px 8px 0 rgba(18, 17, 15, 0.1);
+  border: 0;
+  box-shadow: none;
+  border-radius: 12px;
   object-position: center 52%;
 }
 .studio-feature .editorial-copy p:not(.eyebrow) {
@@ -983,8 +985,9 @@ button {
     height: 480px;
   }
   .studio-feature .editorial-image {
-    height: 620px;
+    height: auto;
     min-height: 0;
+    aspect-ratio: 1;
     padding: 18px;
   }
   .editorial-copy {
