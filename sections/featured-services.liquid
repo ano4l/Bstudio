@@ -8,17 +8,23 @@
     {% if collection != blank %}
       {% for product in collection.products limit: section.settings.limit %}
         {% liquid
-          assign fallback_asset = 'service-portfolio/image00007.jpeg'
+          assign fallback_asset = 'service-portfolio/clean-straightening-face-blurred.png'
           assign image_alt = product.featured_image.alt | default: product.title
           case forloop.index
             when 1
-              assign fallback_asset = 'service-portfolio/image00013.jpeg'
+              assign fallback_asset = 'service-portfolio/classic-frontal-ponytail-01.jpeg'
             when 2
-              assign fallback_asset = 'service-portfolio/image00014.jpeg'
+              assign fallback_asset = 'service-portfolio/fluffy-ponytail-01.jpeg'
             when 3
               assign fallback_asset = 'service-portfolio/image00010.jpeg'
             when 4
-              assign fallback_asset = 'service-portfolio/image00007.jpeg'
+              assign fallback_asset = 'service-portfolio/clean-straightening-face-blurred.png'
+            when 5
+              assign fallback_asset = 'service-portfolio/image00015.jpeg'
+            when 6
+              assign fallback_asset = 'service-portfolio/bob-01.jpeg'
+            when 7
+              assign fallback_asset = 'service-portfolio/image00018.jpeg'
           endcase
         %}
         <a class="service-card" href="{{ product.url }}">
@@ -39,14 +45,20 @@
     {% else %}
       {% for block in section.blocks %}
         {% liquid
-          assign fallback_asset = 'service-portfolio/image00013.jpeg'
+          assign fallback_asset = 'service-portfolio/classic-frontal-ponytail-01.jpeg'
           case forloop.index
             when 2
-              assign fallback_asset = 'service-portfolio/image00014.jpeg'
+              assign fallback_asset = 'service-portfolio/fluffy-ponytail-01.jpeg'
             when 3
               assign fallback_asset = 'service-portfolio/image00010.jpeg'
             when 4
-              assign fallback_asset = 'service-portfolio/image00007.jpeg'
+              assign fallback_asset = 'service-portfolio/clean-straightening-face-blurred.png'
+            when 5
+              assign fallback_asset = 'service-portfolio/image00015.jpeg'
+            when 6
+              assign fallback_asset = 'service-portfolio/bob-01.jpeg'
+            when 7
+              assign fallback_asset = 'service-portfolio/image00018.jpeg'
           endcase
         %}
         <a class="service-card" href="{{ routes.collections_url }}" {{ block.shopify_attributes }}>
@@ -63,5 +75,5 @@
 </section>
 
 {% schema %}
-{"name":"Featured services","settings":[{"type":"text","id":"heading","default":"Signature services","label":"Heading"},{"type":"textarea","id":"text","default":"Every appointment begins with the right service and ends with a finish tailored to you.","label":"Intro"},{"type":"collection","id":"collection","label":"Services collection"},{"type":"range","id":"limit","min":2,"max":8,"step":1,"default":4,"label":"Services shown"}],"blocks":[{"type":"service","name":"Demo service","settings":[{"type":"text","id":"title","label":"Title","default":"Signature Frontal Install"},{"type":"textarea","id":"text","label":"Text","default":"A precise, polished installation with a considered finish."}]}],"presets":[{"name":"Featured services","blocks":[{"type":"service"},{"type":"service","settings":{"title":"Glueless Unit Fitting"}},{"type":"service","settings":{"title":"Closure Install"}},{"type":"service","settings":{"title":"Refresh & Restyle"}}]}]}
+{"name":"Featured services","settings":[{"type":"text","id":"heading","default":"Signature services","label":"Heading"},{"type":"textarea","id":"text","default":"Every appointment begins with the right service and ends with a finish tailored to you.","label":"Intro"},{"type":"collection","id":"collection","label":"Services collection"},{"type":"range","id":"limit","min":2,"max":8,"step":1,"default":7,"label":"Services shown"}],"blocks":[{"type":"service","name":"Demo service","settings":[{"type":"text","id":"title","label":"Title","default":"Signature Frontal Install"},{"type":"textarea","id":"text","label":"Text","default":"A precise, polished installation with a considered finish."}]}],"presets":[{"name":"Featured services","blocks":[{"type":"service"},{"type":"service","settings":{"title":"Glueless Unit Fitting"}},{"type":"service","settings":{"title":"Closure Install"}},{"type":"service","settings":{"title":"Refresh & Restyle"}}]}]}
 {% endschema %}
