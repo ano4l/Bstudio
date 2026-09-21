@@ -272,6 +272,30 @@ button {
   letter-spacing: 0.21em;
   text-transform: uppercase;
 }
+.hero-image-cta {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid rgba(18, 17, 15, 0.62);
+  background: rgba(243, 237, 227, 0.86);
+  color: var(--ink);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background-color var(--motion-fast) ease, transform var(--motion-fast) ease;
+}
+.hero-image-cta:hover,
+.hero-image-cta:focus-visible {
+  background: var(--ivory);
+  transform: translateY(-2px);
+}
 .hero-number {
   position: absolute;
   left: -24px;
@@ -2637,6 +2661,13 @@ body {
   }
   .hero-frame img {
     object-position: center 38%;
+  }
+  .hero-image-cta {
+    left: 20px;
+    bottom: 20px;
+    min-height: 40px;
+    padding-inline: 13px;
+    font-size: 8px;
   }
   .editorial {
     display: block;
